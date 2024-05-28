@@ -283,7 +283,7 @@ void ACheliosCharacter::AimOffset(float DeltaTime)
 		StartingAimRotation = FRotator(0.f, GetBaseAimRotation().Yaw, 0.f);
 		AO_Yaw = 0.f;
 		bUseControllerRotationYaw = true;
-	
+
 	}
 
 	AO_Pitch = GetBaseAimRotation().Pitch;
@@ -624,17 +624,17 @@ void ACheliosCharacter::HealRampUp(float DeltaTime)
 void ACheliosCharacter::ShieldRampUp(float DeltaTime)
 {
 	if (!bReplenishingShield || this == nullptr) return;
-	
-		const float ReplenishThisFrame = ShieldReplenishRate * DeltaTime;
-		Attributes->SetShield(FMath::Clamp(Attributes->GetShield() + ReplenishThisFrame, 0.f, Attributes->GetMaxShield()));
-		UpdateHUDShield();
-		ShieldReplenishAmount -= ReplenishThisFrame;
-	
-		if (ShieldReplenishAmount <= 0.f || Attributes->GetShield() >= Attributes->GetMaxShield())
-		{
-			bReplenishingShield = false;
-			ShieldReplenishAmount = 0.f;
-		}
+
+	const float ReplenishThisFrame = ShieldReplenishRate * DeltaTime;
+	Attributes->SetShield(FMath::Clamp(Attributes->GetShield() + ReplenishThisFrame, 0.f, Attributes->GetMaxShield()));
+	UpdateHUDShield();
+	ShieldReplenishAmount -= ReplenishThisFrame;
+
+	if (ShieldReplenishAmount <= 0.f || Attributes->GetShield() >= Attributes->GetMaxShield())
+	{
+		bReplenishingShield = false;
+		ShieldReplenishAmount = 0.f;
+	}
 }
 
 void ACheliosCharacter::Heal(float HealAmount, float HealingTime)
@@ -789,7 +789,7 @@ void ACheliosCharacter::FoundInteractable(AActor* NewInteractable)
 		TargetInteractable = InteractionData.CurrentInteractable;
 		TargetInteractable->EndFocus();
 	}
-	
+
 	InteractionData.CurrentInteractable = NewInteractable;
 	TargetInteractable = NewInteractable;
 
@@ -846,12 +846,12 @@ void ACheliosCharacter::BeginInteract()
 
 void ACheliosCharacter::EndInteract()
 {
-		GetWorldTimerManager().ClearTimer(TimerHandle_Interaction);
+	GetWorldTimerManager().ClearTimer(TimerHandle_Interaction);
 
-		if (IsValid(TargetInteractable.GetObject()))
-		{
-			TargetInteractable->EndInteract();
-		}
+	if (IsValid(TargetInteractable.GetObject()))
+	{
+		TargetInteractable->EndInteract();
+	}
 }
 
 void ACheliosCharacter::Interact()

@@ -105,7 +105,7 @@ protected:
 	EEdgedWeaponState EdgedWeaponState;
 
 	UPROPERTY(VisibleAnywhere, Category = "Weapon Properties")
-	UWidgetComponent* PickupWidget;
+	class UWidgetComponent* PickupWidget;
 
 	UPROPERTY()
 	class ACheliosCharacter* CheliosOwnerCharacter;
@@ -124,6 +124,7 @@ protected:
 
 	UPROPERTY(EditAnywhere, Category = "Weapon Properties")
 	float Damage = 30.f;
+
 private:
 //======================================================================
 // FUNCTIONS

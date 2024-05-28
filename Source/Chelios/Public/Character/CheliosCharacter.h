@@ -42,9 +42,9 @@ class CHELIOS_API ACheliosCharacter : public ABaseCharacter, public IPickupInter
 	GENERATED_BODY()
 
 public:
-//======================================================================
-// FUNCTIONS
-//======================================================================
+	//======================================================================
+	// FUNCTIONS
+	//======================================================================
 	ACheliosCharacter();
 
 	virtual void Tick(float DeltaTime) override;
@@ -80,14 +80,14 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void Vault(float Stamina);
-	 
+
 	void Heal(float HealAmount, float HealingTime);	// Buff Health
 	void ReplenishShield(float ShieldAmount, float ReplenishTime);	// Buff Shield
 
-//======================================================================
-// PROPERTIES & VARIABLES
-//======================================================================
-	
+	//======================================================================
+	// PROPERTIES & VARIABLES
+	//======================================================================
+
 	UPROPERTY(VisibleAnywhere, Category = Camera)
 	class USpringArmComponent* CameraBoom3PV;
 
@@ -113,17 +113,15 @@ public:
 	EActionState GetCombatActionState() const;
 
 	class ACheliosPlayerController* CheliosPlayerController;
-	
+
 protected:
-//======================================================================
-// FUNCTIONS
-//======================================================================
+	//======================================================================
+	// FUNCTIONS
+	//======================================================================
 	virtual void BeginPlay() override;
 
-	//=========Buffs==========
-	void HealRampUp(float DeltaTime);
-	void ShieldRampUp(float DeltaTime);
-	//=========Buffs==========
+	void HealRampUp(float DeltaTime); // Buff Health
+	void ShieldRampUp(float DeltaTime); // Buff Shield
 
 	void MoveForward(float Value);
 	void MoveRight(float Value);
@@ -170,9 +168,9 @@ protected:
 	void EndInteract();
 	void Interact();
 
-//======================================================================
-// PROPERTIES & VARIABLES
-//======================================================================
+	//======================================================================
+	// PROPERTIES & VARIABLES
+	//======================================================================
 	UPROPERTY()
 	ACheliosHUD* HUD;
 
@@ -204,18 +202,18 @@ protected:
 	UPROPERTY(EditDefaultsOnly)
 	float ElimDelay = 5.f;
 
-	bool bHealing = false;					//
-	float HealingRate = 0;					//
-	float AmountToHeal = 0.f;				//
-											//	Buffs
-	bool bReplenishingShield = false;		//
-	float ShieldReplenishRate = 0.f;		//
-	float ShieldReplenishAmount = 0.f;		//
+	bool bHealing = false;
+	float HealingRate = 0;
+	float AmountToHeal = 0.f;
+
+	bool bReplenishingShield = false;
+	float ShieldReplenishRate = 0.f;
+	float ShieldReplenishAmount = 0.f;
 
 private:
-//======================================================================
-// PROPERTIES & VARIABLES
-//======================================================================
+	//======================================================================
+	// PROPERTIES & VARIABLES
+	//======================================================================
 
 	UPROPERTY(BlueprintReadOnly, Category = "Movement", meta = (AllowPrivateAccess = "true"))
 	bool bIsSprinting;
